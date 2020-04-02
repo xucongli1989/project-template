@@ -18,7 +18,7 @@ npm install --save `Your Project`
 ```javascript
 //Import the whole module
 //Or import "demo/dist/index.polyfill" with polyfill
-import JsKit from "demo"
+import demo from "demo"
 ...your code...
 ```
 
