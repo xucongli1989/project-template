@@ -1,2 +1,3 @@
-# project-template
-This is my project templates.
+# 简介
+这是我的项目模板仓库，里面存放着搭建项目时的一些通用的文件夹文件等信息。
+

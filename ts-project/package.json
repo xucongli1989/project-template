@@ -1,0 +1,83 @@
+{
+  "name": "ts-project",
+  "version": "1.0.0",
+  "description": "This is my project template.",
+  "main": "./dist/index.js",
+  "scripts": {
+    "check": "echo Checking the version number of the dependent package... && x-package-version-strict-check && echo Checking code quality... && eslint ./{src,test}/**/*",
+    "build_ts": "tsc --emitDeclarationOnly && babel src --out-dir lib --extensions \".ts,.tsx\" --source-maps inline && tsc --emitDeclarationOnly --declarationDir lib",
+    "copy": "cpy --cwd=dist index.d.ts ./ --rename=index.polyfill.d.ts && cpy --cwd=dist index.d.ts.map ./ --rename=index.polyfill.d.ts.map",
+    "dev": "npm run check && webpack  --mode=development --progress",
+    "dist": "npm run check && webpack  --mode=production --progress && npm run build_ts && npm run copy && npm run test",
+    "test": "jest --coverage --logHeapUsage",
+    "start": "webpack-dev-server",
+    "release": "standard-version",
+    "ct": "git-cz -a"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xucongli1989/project-template.git"
+  },
+  "files": [
+    "dist",
+    "lib"
+  ],
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  },
+  "keywords": [
+    "javascript",
+    "toolkit",
+    "js",
+    "helper",
+    "library"
+  ],
+  "author": "XCL",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/xucongli1989/project-template/issues"
+  },
+  "homepage": "https://github.com/xucongli1989/project-template#readme",
+  "devDependencies": {
+    "@babel/cli": "7.8.4",
+    "@babel/core": "7.9.0",
+    "@babel/plugin-proposal-class-properties": "7.8.3",
+    "@babel/plugin-proposal-object-rest-spread": "7.9.0",
+    "@babel/plugin-transform-async-to-generator": "7.8.3",
+    "@babel/preset-env": "7.9.0",
+    "@babel/preset-typescript": "7.9.0",
+    "@types/jest": "25.1.4",
+    "@types/node": "13.9.5",
+    "@typescript-eslint/eslint-plugin": "2.25.0",
+    "@typescript-eslint/parser": "2.25.0",
+    "babel-loader": "8.1.0",
+    "clean-webpack-plugin": "3.0.0",
+    "commitizen": "4.0.3",
+    "cpy-cli": "3.1.0",
+    "eslint": "6.8.0",
+    "eslint-config-airbnb": "18.1.0",
+    "eslint-plugin-import": "2.20.2",
+    "eslint-plugin-jsx-a11y": "6.2.3",
+    "eslint-plugin-react": "7.19.0",
+    "html-webpack-plugin": "4.0.3",
+    "html-webpack-tags-plugin": "2.0.17",
+    "jest": "25.2.4",
+    "localStorage": "1.0.4",
+    "react": "16.13.1",
+    "standard-version": "7.1.0",
+    "ts-jest": "25.3.0",
+    "typescript": "3.8.3",
+    "webpack": "4.42.1",
+    "webpack-cli": "3.3.11",
+    "webpack-dev-server": "3.10.3",
+    "x-package-version-strict-check": "1.7.0"
+  },
+  "dependencies": {
+    "@babel/polyfill": "7.8.7"
+  },
+  "engines": {
+    "node": ">=8.12.0"
+  }
+}
